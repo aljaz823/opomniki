@@ -33,11 +33,18 @@ window.addEventListener('load', function() {
 			var casovnik = opomnik.querySelector("span");
 			var cas = parseInt(casovnik.innerHTML);
 	
-			//TODO: 
+			//TO-DO: 
 			// - če je čas enak 0, izpiši opozorilo "Opomnik!\n\nZadolžitev NAZIV_OPOMNIK je potekla!"
+			if (cas == 0) {
+				var naziv_opomnika = opomnik.querySelector(".naziv_opomnika").innerHTML;
+				alert("Opomnik!\n\nZadolžitev '" + naziv_opomnika + "' je potekla!");
+				document.querySelector("#opomniki").removeChild(opomnik);
+			}
 			// - sicer zmanjšaj čas za 1 in nastavi novo vrednost v časovniku
+			else {
+				casovnik.innerHTML = cas -1;
+			}
 		}
 	}
 	setInterval(posodobiOpomnike, 1000);
-	
 });
